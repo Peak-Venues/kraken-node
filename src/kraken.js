@@ -91,7 +91,7 @@ class Kraken {
      * @memberof Kraken
      */
     constructor(keyOrAuth, secret = null) {
-        if(!keyOrAuth) throw new Error('Please provide an API key');
+        if (!keyOrAuth) throw new Error('Please provide an API key');
 
         if (keyOrAuth instanceof KrakenAuth) {
             this.auth = keyOrAuth
@@ -165,7 +165,9 @@ Kraken.KrakenAuth = KrakenAuth
 Kraken.default = {
     axios: new AxiosOptions({
         responseType: 'json',
-        headers: { 'User-Agent': userAgent }
+        headers: { 'User-Agent': userAgent },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity
     })
 }
 
